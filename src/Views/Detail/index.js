@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import './style.css';
+import FbImageLibrary from 'react-fb-image-grid'
+
 
 function Detail() {
     const { adId } = useParams();
-    const [detail, setDetail] = useState(null);
-    const [selectedImage, setSelectedImage] = useState(null);
+    const [detail, setDetail] = useState();
 
     useEffect(() => {
         getApi();
@@ -15,7 +16,6 @@ function Detail() {
         fetch(`https://dummyjson.com/products/${adId}`)
             .then(res => res.json())
             .then(res => setDetail(res))
-            .catch(error => console.error("Error fetching data:", error));
     }
 
     if (!detail) {
@@ -28,24 +28,17 @@ function Detail() {
 
     const { thumbnail, title, discountPercentage, images, price, description, brand, category, stock, rating } = detail;
 
-    const handleThumbnailClick = (image) => {
-        setSelectedImage(image);
-    }
+
 
     return (
         <div className="body">
             <div className="main">
                 <div className="thumbnail">
-                    <img src={thumbnail} alt="Thumbnail" onClick={() => handleThumbnailClick(thumbnail)} />
+                    <img src={thumbnail} alt="Thumbnail" />
                 </div>
 
-                <div className="image">
-                    {selectedImage ? (
-                        <img src={selectedImage} alt="Selected" />
-                    ) : null}
-                    {images.map((item, index) => (
-                        <img key={index} src={item} alt={`Image ${index}`} onClick={() => handleThumbnailClick(item)} />
-                    ))}
+                <div className="imgLib">
+                <FbImageLibrary images={images} />
                 </div>
 
                 <div className="details">
@@ -67,6 +60,7 @@ function Detail() {
                         <h3>Description</h3>
                         <p>{description}</p>
                     </div>
+                
                 </div>
             </div>
         </div>

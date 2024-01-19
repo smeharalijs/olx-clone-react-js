@@ -54,7 +54,7 @@ function Footer() {
         <div className="app-stores">
           <img src="https://1000logos.net/wp-content/uploads/2020/08/apple-app-store-logo.jpg" alt="App Store" />
           <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Google Play" />
-          <img src="https://1000logos.net/wp-content/uploads/2020/08/apple-app-store-logo.jpg" alt="App Gallery" />
+          <img src="https://money.pro/blog/2022/11/16/money-pro-on-appgallery/huawei.jpg" alt="App Gallery" />
         </div>
       </div>
     </footer>
